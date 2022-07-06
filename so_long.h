@@ -6,7 +6,7 @@
 /*   By: asoler <asoler@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 00:04:34 by asoler            #+#    #+#             */
-/*   Updated: 2022/07/06 14:03:29 by asoler           ###   ########.fr       */
+/*   Updated: 2022/07/06 16:01:34 by asoler           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,18 +35,19 @@ typedef struct s_mlx
 typedef struct s_images
 {
 	void	*image;
-	int			x;
-	int			y;
+	int		x;
+	int		y;
+	int		height;
+	int		width;
 }	t_images;
 
 typedef struct s_map
 {
-	int			fd;
-	int			*x;
-	int			*y;
+	int	fd;
+	int	x;
+	int	y;
 }	t_map;
 
-// size_t	ft_strlen(const char *str);
-// char	*get_next_line(int fd);
+// int	so_long(int argc, char *argv[]);
 
 #endif
