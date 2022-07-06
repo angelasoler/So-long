@@ -19,7 +19,7 @@ int	main(void)
 	x = 0;
 	y = 0;
 	mlx_ptr = mlx_init();
-	win_ptr = mlx_new_window(mlx_ptr, WINDOW_WIDTH, WINDOW_HEIGHT, "My first window!");
+	win_ptr = mlx_new_window(mlx_ptr, 448, 160, "My first window!");
 	img = mlx_xpm_file_to_image(mlx_ptr, relative_path, &img_width, &img_height);
 	printf("%p\n", img);
 	while (x <= 600 && y <= 300)

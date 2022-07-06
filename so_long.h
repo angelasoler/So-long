@@ -6,7 +6,7 @@
 /*   By: asoler <asoler@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 00:04:34 by asoler            #+#    #+#             */
-/*   Updated: 2022/07/06 16:01:34 by asoler           ###   ########.fr       */
+/*   Updated: 2022/07/06 23:02:33 by asoler           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,24 +17,28 @@
 # include <stdlib.h>
 # include <fcntl.h>
 # define SO_LONG_H
-# define PLAYER_PATH "../images/Ninja_Frog.xpm"
-# define WALL_PATH "../images/DUNGEONBRICKS.xpm"
-# define COLLECTIBLES_PATH "../images/apple_pie.xpm"
-# define EXIT_PATH "../images/OFFICEDOOR.xpm"
-# define BACKGROUND_PATH "../images/RUNKS.xpm"
+# define PLAYER_PATH "images/Ninja_Frog.xpm"
+# define WALL_PATH "images/DUNGEONBRICKS.xpm"
+# define COLLECTIBLES_PATH "images/apple_pie.xpm"
+# define EXIT_PATH "images/OFFICEDOOR.xpm"
+# define BACKGROUND_PATH "images/RUNKS.xpm"
 
 typedef struct s_mlx
 {
 	void	*init;
 	void	*window;
 	void	*image;
-	int		windowdow_width;
+	int		windowd_width;
 	int		window_height;
 }	t_mlx;
 
 typedef struct s_images
 {
-	void	*image;
+	void	*wall;
+	void	*back_ground;
+	void	*collectibles;
+	void	*exit;
+	void	*player;
 	int		x;
 	int		y;
 	int		height;
