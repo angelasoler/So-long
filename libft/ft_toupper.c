@@ -1,27 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   ft_toupper.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: asoler <asoler@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/07 22:30:28 by asoler            #+#    #+#             */
-/*   Updated: 2022/07/06 14:30:06 by asoler           ###   ########.fr       */
+/*   Created: 2022/04/06 21:38:03 by asoler            #+#    #+#             */
+/*   Updated: 2022/04/22 17:30:34 by asoler           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# include <unistd.h>
-# include <stdlib.h>
-# define GET_NEXT_LINE_H
-# define BUFFER_SIZE 1
-
-char	*get_next_line(int fd);
-
-int		count_remains_lf(char *s, int size);
-
-int		gnl_strlen(char *s);
-
-void	ft_strcpy(char *dest, char *src);
-
-#endif
+int	ft_toupper(int c)
+{
+	if (c >= 'a' && c <= 'z')
+		c -= 32;
+	return (c);
+}

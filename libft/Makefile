@@ -4,7 +4,9 @@ CC=gcc
 
 CFLAGS=-Wall -Werror -Wextra
 
-SRC=ft_strlen.c get_next_line.c get_next_line_utils.c
+SRC=ft_strlen.c ft_itoa.c ft_toupper.c\
+	get_next_line.c	get_next_line_utils.c\
+	ft_printf.c ft_printf_other_convs.c ft_printf_int_convs.c
 
 OBJ=$(SRC:.c=.o)
 

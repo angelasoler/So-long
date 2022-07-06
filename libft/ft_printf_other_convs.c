@@ -1,27 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   ft_printf_other_convs.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: asoler <asoler@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/07 22:30:28 by asoler            #+#    #+#             */
-/*   Updated: 2022/07/06 14:30:06 by asoler           ###   ########.fr       */
+/*   Created: 2022/05/26 00:35:24 by asoler            #+#    #+#             */
+/*   Updated: 2022/07/06 14:28:44 by asoler           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# include <unistd.h>
-# include <stdlib.h>
-# define GET_NEXT_LINE_H
-# define BUFFER_SIZE 1
+#include "../includes/ft_printf.h"
 
-char	*get_next_line(int fd);
+int	ft_printf_char(char c)
+{
+	write(1, &c, 1);
+	return (0);
+}
 
-int		count_remains_lf(char *s, int size);
-
-int		gnl_strlen(char *s);
-
-void	ft_strcpy(char *dest, char *src);
-
-#endif
+int	ft_printf_str(char *s)
+{
+	if (s)
+	{
+		write(1, s, ft_strlen(s));
+		return (ft_strlen(s) - 1);
+	}
+	else
+	{
+		write(1, "(null)", 6);
+		return (5);
+	}
+	return (0);
+}
