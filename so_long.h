@@ -6,7 +6,7 @@
 /*   By: asoler <asoler@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 00:04:34 by asoler            #+#    #+#             */
-/*   Updated: 2022/07/06 23:02:33 by asoler           ###   ########.fr       */
+/*   Updated: 2022/07/07 15:23:33 by asoler           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,11 @@
 # include <stdlib.h>
 # include <fcntl.h>
 # define SO_LONG_H
-# define PLAYER_PATH "images/Ninja_Frog.xpm"
-# define WALL_PATH "images/DUNGEONBRICKS.xpm"
+# define PLAYER_PATH "images/ninja_frog.xpm"
+# define WALL_PATH "images/wall_brick.xpm"
 # define COLLECTIBLES_PATH "images/apple_pie.xpm"
-# define EXIT_PATH "images/OFFICEDOOR.xpm"
-# define BACKGROUND_PATH "images/RUNKS.xpm"
+# define EXIT_PATH "images/door.xpm"
+# define BACKGROUND_PATH "images/wood_background.xpm"
 
 typedef struct s_mlx
 {
@@ -53,5 +53,9 @@ typedef struct s_map
 }	t_map;
 
 // int	so_long(int argc, char *argv[]);
+//TODO verify why make is just accepting main function
+
+void	allocate_assets(t_images *assets, void *init);
+void	put_image_into_screen(t_mlx mlx, char map_composing, t_images assets);
 
 #endif

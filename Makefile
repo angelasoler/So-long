@@ -6,7 +6,7 @@ WARNING_FLAGS=-Wall -Werror -Wextra
 
 X_FLAGS=-lX11 -lXext -lmlx
 
-SRC=so_long.c
+SRC=so_long.c so_long_utils.c
 
 OBJ=$(SRC:.c=.o)
 
