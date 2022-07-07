@@ -6,7 +6,7 @@
 /*   By: asoler <asoler@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 14:08:05 by asoler            #+#    #+#             */
-/*   Updated: 2022/07/07 15:44:28 by asoler           ###   ########.fr       */
+/*   Updated: 2022/07/07 15:45:14 by asoler           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,6 @@ void	put_sprites(int fd, t_mlx mlx)
 	int			i;
 	t_images	assets;
 
-	line = malloc(sizeof(char) * 1);
-	*line = 0;
 	assets.y = 0;
 	allocate_assets(&assets, mlx.init);
 	line = get_next_line(fd);
