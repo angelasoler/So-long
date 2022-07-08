@@ -6,7 +6,7 @@
 /*   By: asoler <asoler@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/07 00:50:18 by asoler            #+#    #+#             */
-/*   Updated: 2022/07/07 15:42:41 by asoler           ###   ########.fr       */
+/*   Updated: 2022/07/08 20:46:18 by asoler           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ void	allocate_assets(t_images *assets, void *init)
 	(init, EXIT_PATH, &assets->height, &assets->width);
 	assets->player = mlx_xpm_file_to_image \
 	(init, PLAYER_PATH, &assets->height, &assets->width);
+	// return (&allocated_sprites);
 }
 
 void	put_image_into_screen(t_mlx mlx, char map_composing, t_images assets)
@@ -53,7 +54,7 @@ void	put_image_into_screen(t_mlx mlx, char map_composing, t_images assets)
 //				- has all wall entire
 //				- has almost one of each asset beside the walls
 //		* if fd != 3 -> or == -1
-// - close window events: clicking and with esc
+// - close window events: clicking closing botton and with esc key
 // - move player
 //		*player eats a collectable, -> erase collectible
 //		*when its in front exit over program 

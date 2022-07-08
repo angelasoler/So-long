@@ -6,7 +6,7 @@
 /*   By: asoler <asoler@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 00:04:34 by asoler            #+#    #+#             */
-/*   Updated: 2022/07/07 15:23:33 by asoler           ###   ########.fr       */
+/*   Updated: 2022/07/08 19:55:34 by asoler           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 # define SO_LONG_H
 # define PLAYER_PATH "images/ninja_frog.xpm"
 # define WALL_PATH "images/wall_brick.xpm"
-# define COLLECTIBLES_PATH "images/apple_pie.xpm"
+# define COLLECTIBLES_PATH "images/raspberry_pie.xpm"
 # define EXIT_PATH "images/door.xpm"
 # define BACKGROUND_PATH "images/wood_background.xpm"
 
@@ -32,6 +32,14 @@ typedef struct s_mlx
 	int		window_height;
 }	t_mlx;
 
+// typedef struct s_asset
+// {
+// 	void	*asset;
+// 	int		x;
+// 	int		y;
+// 	s_asset	*next;
+// }	t_asset;
+
 typedef struct s_images
 {
 	void	*wall;
@@ -43,13 +51,15 @@ typedef struct s_images
 	int		y;
 	int		height;
 	int		width;
+	// t_asset	image;
 }	t_images;
 
 typedef struct s_map
 {
-	int	fd;
-	int	x;
-	int	y;
+	char	**map;
+	int		fd;
+	int		x;
+	int		y;
 }	t_map;
 
 // int	so_long(int argc, char *argv[]);
