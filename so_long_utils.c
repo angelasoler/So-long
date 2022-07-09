@@ -6,7 +6,7 @@
 /*   By: asoler <asoler@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/07 00:50:18 by asoler            #+#    #+#             */
-/*   Updated: 2022/07/09 03:30:52 by asoler           ###   ########.fr       */
+/*   Updated: 2022/07/09 17:06:55 by asoler           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ void	close_window(t_mlx *mlx)
 
 	i = 0;
 	mlx_clear_window(mlx->init, mlx->window);
+	// mlx_loop_end(mlx->init);
 	free(mlx->assets.wall);
 	free(mlx->assets.back_ground);
 	free(mlx->assets.collectibles);
@@ -63,17 +64,13 @@ void	close_window(t_mlx *mlx)
 	}
 	free(mlx->read_map.map);
 	mlx_destroy_window(mlx->init, mlx->window);
-	free(mlx->window);
+	mlx_destroy_display(mlx->init);
+	// free(mlx->window);
 	free(mlx->init);
 }
-// 	if (esc_key == )
-// 	{
-// 		free
-// 		mlx_clear_window
-// 		mlx_destroy_window
-// 	}
 
-int	key_input(int key, t_mlx mlx)
+
+int	key_hook(int key, t_mlx mlx)
 {
 	if (key == 65307)
 	{
@@ -82,6 +79,14 @@ int	key_input(int key, t_mlx mlx)
 	}
 	return (0);
 }
+
+// int	cross_mouse_hoook(int button, int x, int y, t_mlx mlx)
+// {
+// 	if (button == 1)
+// 	{
+// 		ft_printf("%d\n%d\n", x, y);
+// 	}
+// }
 
 //TODO
 // - see if window is ereasing when moving

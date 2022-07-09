@@ -6,7 +6,7 @@
 /*   By: asoler <asoler@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 00:04:34 by asoler            #+#    #+#             */
-/*   Updated: 2022/07/09 03:06:44 by asoler           ###   ########.fr       */
+/*   Updated: 2022/07/09 17:00:25 by asoler           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ typedef struct s_mlx
 
 void	allocate_assets(t_images *assets, void *init);
 void	put_image_into_screen(t_mlx mlx, char map_composing, t_images assets);
-int		key_input(int key, t_mlx);
+int		key_hook(int key, t_mlx);
 
 
 #endif

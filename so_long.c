@@ -6,7 +6,7 @@
 /*   By: asoler <asoler@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 14:08:05 by asoler            #+#    #+#             */
-/*   Updated: 2022/07/09 03:34:18 by asoler           ###   ########.fr       */
+/*   Updated: 2022/07/09 17:18:40 by asoler           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 t_images	put_sprites(t_mlx mlx)
 {
-	char		*line;
 	int			v;
 	int			i;
 	int			height;
@@ -41,13 +40,12 @@ t_images	put_sprites(t_mlx mlx)
 
 void	open_window(t_mlx *mlx)
 {
-	int			hook_result;
-
 	mlx->init = mlx_init();
 	mlx->window = mlx_new_window(mlx->init, mlx->read_map.x, \
 	mlx->read_map.y, "FT Ninja Frog, So Long");
 	put_sprites(*mlx);
-	mlx_key_hook(mlx->window, key_input, &mlx);
+	mlx_key_hook(mlx->window, key_hook, &mlx);
+	// mlx_mouse_hook(mlx->window, cross_mouse_hoook, &mlx);
 	mlx_loop(mlx->init);
 }
 
@@ -92,6 +90,7 @@ int	main(int argc, char *argv[])
 	//TODO verify error in arguments
 	//if path exist
 	//if is a valid map -> has one of each assets kind
+	ft_printf("%d\n", argc);
 	mlx.read_map.fd = open(argv[1], O_RDONLY);
 	error = get_map_size(&mlx.read_map);
 	close(mlx.read_map.fd);
