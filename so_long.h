@@ -6,7 +6,7 @@
 /*   By: asoler <asoler@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 00:04:34 by asoler            #+#    #+#             */
-/*   Updated: 2022/07/08 19:55:34 by asoler           ###   ########.fr       */
+/*   Updated: 2022/07/09 03:06:44 by asoler           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,23 +23,6 @@
 # define EXIT_PATH "images/door.xpm"
 # define BACKGROUND_PATH "images/wood_background.xpm"
 
-typedef struct s_mlx
-{
-	void	*init;
-	void	*window;
-	void	*image;
-	int		windowd_width;
-	int		window_height;
-}	t_mlx;
-
-// typedef struct s_asset
-// {
-// 	void	*asset;
-// 	int		x;
-// 	int		y;
-// 	s_asset	*next;
-// }	t_asset;
-
 typedef struct s_images
 {
 	void	*wall;
@@ -51,7 +34,6 @@ typedef struct s_images
 	int		y;
 	int		height;
 	int		width;
-	// t_asset	image;
 }	t_images;
 
 typedef struct s_map
@@ -62,10 +44,29 @@ typedef struct s_map
 	int		y;
 }	t_map;
 
+typedef struct s_mlx
+{
+	void		*init;
+	void		*window;
+	t_images	assets;
+	t_map		read_map;
+}	t_mlx;
+
+// typedef struct s_asset
+// {
+// 	void	*asset;
+// 	int		x;
+// 	int		y;
+// 	s_asset	*next;
+// }	t_asset;
+
+
 // int	so_long(int argc, char *argv[]);
 //TODO verify why make is just accepting main function
 
 void	allocate_assets(t_images *assets, void *init);
 void	put_image_into_screen(t_mlx mlx, char map_composing, t_images assets);
+int		key_input(int key, t_mlx);
+
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: asoler <asoler@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/07 00:50:18 by asoler            #+#    #+#             */
-/*   Updated: 2022/07/08 20:46:18 by asoler           ###   ########.fr       */
+/*   Updated: 2022/07/09 03:30:52 by asoler           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ void	allocate_assets(t_images *assets, void *init)
 	(init, EXIT_PATH, &assets->height, &assets->width);
 	assets->player = mlx_xpm_file_to_image \
 	(init, PLAYER_PATH, &assets->height, &assets->width);
-	// return (&allocated_sprites);
 }
 
 void	put_image_into_screen(t_mlx mlx, char map_composing, t_images assets)
@@ -44,6 +43,44 @@ void	put_image_into_screen(t_mlx mlx, char map_composing, t_images assets)
 	else if (map_composing == 'P')
 		mlx_put_image_to_window \
 	(mlx.init, mlx.window, assets.player, assets.x, assets.y);
+}
+
+void	close_window(t_mlx *mlx)
+{
+	int	i;
+
+	i = 0;
+	mlx_clear_window(mlx->init, mlx->window);
+	free(mlx->assets.wall);
+	free(mlx->assets.back_ground);
+	free(mlx->assets.collectibles);
+	free(mlx->assets.exit);
+	free(mlx->assets.player);
+	while(mlx->read_map.map[i])
+	{
+		free(mlx->read_map.map[i]);
+		i++;
+	}
+	free(mlx->read_map.map);
+	mlx_destroy_window(mlx->init, mlx->window);
+	free(mlx->window);
+	free(mlx->init);
+}
+// 	if (esc_key == )
+// 	{
+// 		free
+// 		mlx_clear_window
+// 		mlx_destroy_window
+// 	}
+
+int	key_input(int key, t_mlx mlx)
+{
+	if (key == 65307)
+	{
+		close_window(&mlx);
+		exit (1);
+	}
+	return (0);
 }
 
 //TODO

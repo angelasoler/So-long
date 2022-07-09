@@ -6,48 +6,49 @@
 /*   By: asoler <asoler@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 14:08:05 by asoler            #+#    #+#             */
-/*   Updated: 2022/07/08 20:44:26 by asoler           ###   ########.fr       */
+/*   Updated: 2022/07/09 03:34:18 by asoler           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	put_sprites(t_map read_map, t_mlx mlx)
+t_images	put_sprites(t_mlx mlx)
 {
 	char		*line;
 	int			v;
 	int			i;
 	int			height;
-	t_images	assets;
 
-	allocate_assets(&assets, mlx.init);
-	height = read_map.y / 32;
-	assets.y = 0;
+	allocate_assets(&mlx.assets, mlx.init);
+	height = mlx.read_map.y / 32;
+	mlx.assets.y = 0;
 	v = 0;
 	while (v < height)
 	{
-		assets.x = 0;
+		mlx.assets.x = 0;
 		i = 0;
-		while (read_map.map[v][i])
+		while (mlx.read_map.map[v][i])
 		{
-			put_image_into_screen(mlx, read_map.map[v][i], assets);
-			assets.x += 32;
+			put_image_into_screen(mlx, mlx.read_map.map[v][i], mlx.assets);
+			mlx.assets.x += 32;
 			i++;
 		}
-		assets.y += 32;
+		mlx.assets.y += 32;
 		v++;
 	}
+	return (mlx.assets);
 }
 
-void	open_window(t_map *read_map)
+void	open_window(t_mlx *mlx)
 {
-	t_mlx	mlx;
+	int			hook_result;
 
-	mlx.init = mlx_init();
-	mlx.window = mlx_new_window(mlx.init, read_map->x, \
-	read_map->y, "FT Ninja Frog, So Long");
-	put_sprites(*read_map, mlx);
-	mlx_loop(mlx.init);
+	mlx->init = mlx_init();
+	mlx->window = mlx_new_window(mlx->init, mlx->read_map.x, \
+	mlx->read_map.y, "FT Ninja Frog, So Long");
+	put_sprites(*mlx);
+	mlx_key_hook(mlx->window, key_input, &mlx);
+	mlx_loop(mlx->init);
 }
 
 int	get_map_size(t_map *read_map)
@@ -85,19 +86,19 @@ int	get_map_size(t_map *read_map)
 
 int	main(int argc, char *argv[])
 {
-	t_map	read_map;
+	t_mlx	mlx;
 	int		error;
 
 	//TODO verify error in arguments
 	//if path exist
 	//if is a valid map -> has one of each assets kind
-	read_map.fd = open(argv[1], O_RDONLY);
-	error = get_map_size(&read_map);
-	close(read_map.fd);
+	mlx.read_map.fd = open(argv[1], O_RDONLY);
+	error = get_map_size(&mlx.read_map);
+	close(mlx.read_map.fd);
 	//verify error
 	if (error)
 		exit(1);
-	open_window(&read_map);
+	open_window(&mlx);
 	return (0);
 }
 
