@@ -6,7 +6,7 @@
 /*   By: asoler <asoler@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 14:08:05 by asoler            #+#    #+#             */
-/*   Updated: 2022/07/09 17:18:40 by asoler           ###   ########.fr       */
+/*   Updated: 2022/07/11 01:01:54 by asoler           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,9 +44,12 @@ void	open_window(t_mlx *mlx)
 	mlx->window = mlx_new_window(mlx->init, mlx->read_map.x, \
 	mlx->read_map.y, "FT Ninja Frog, So Long");
 	put_sprites(*mlx);
-	mlx_key_hook(mlx->window, key_hook, &mlx);
-	// mlx_mouse_hook(mlx->window, cross_mouse_hoook, &mlx);
+	mlx_key_hook(mlx->window, &key_hook, &mlx);
+	mlx_hook(mlx->window, 04, 1L<<5, close_window, &mlx);
+	// mlx_mouse_hook(mlx->window, cross_mouse_hook, &mlx);
 	mlx_loop(mlx->init);
+	mlx_destroy_display(mlx->init);
+	free(mlx->init);
 }
 
 int	get_map_size(t_map *read_map)
@@ -96,7 +99,7 @@ int	main(int argc, char *argv[])
 	close(mlx.read_map.fd);
 	//verify error
 	if (error)
-		exit(1);
+		exit(0);
 	open_window(&mlx);
 	return (0);
 }

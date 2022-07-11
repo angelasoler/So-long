@@ -1,8 +1,6 @@
 NAME=solong
 
-CC=cc
-
-WARNING_FLAGS=-Wall -Werror -Wextra
+CCW=cc -Wall -Werror -Wextra
 
 X_FLAGS=-lX11 -lXext -lmlx
 
@@ -13,10 +11,10 @@ OBJ=$(SRC:.c=.o)
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	$(CC) $(OBJ) $(X_FLAGS) -o $(NAME)
+	$(CCW) $(OBJ) $(X_FLAGS) -o $(NAME)
 
 %.o: %.c
-	$(CC) -g3 $(FLAGS) -c $< -o $@
+	$(CCW) -g3 $(FLAGS) -c $< -o $@
 
 re: fclean all
 
