@@ -6,7 +6,7 @@
 /*   By: asoler <asoler@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 00:04:34 by asoler            #+#    #+#             */
-/*   Updated: 2022/07/11 01:03:08 by asoler           ###   ########.fr       */
+/*   Updated: 2022/07/12 16:47:36 by asoler           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,22 +52,10 @@ typedef struct s_mlx
 	t_map		read_map;
 }	t_mlx;
 
-// typedef struct s_asset
-// {
-// 	void	*asset;
-// 	int		x;
-// 	int		y;
-// 	s_asset	*next;
-// }	t_asset;
-
-
-// int	so_long(int argc, char *argv[]);
-//TODO verify why make is just accepting main function
-
 void	allocate_assets(t_images *assets, void *init);
-void	put_image_into_screen(t_mlx mlx, char map_composing, t_images assets);
-int		key_hook(int key, t_mlx);
-int		cross_mouse_hook(int button, int x, int y, t_mlx mlx);
-int	close_window(t_mlx *mlx);
+void	put_image_into_screen(t_mlx *mlx, char map_composing, t_images assets);
+int		key_hook(int key, t_mlx *mlx);
+int		close_window(t_mlx *mlx);
+int		no_event_loop(t_mlx *mlx);
 
 #endif

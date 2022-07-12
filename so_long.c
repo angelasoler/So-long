@@ -6,36 +6,36 @@
 /*   By: asoler <asoler@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 14:08:05 by asoler            #+#    #+#             */
-/*   Updated: 2022/07/11 01:01:54 by asoler           ###   ########.fr       */
+/*   Updated: 2022/07/12 16:51:25 by asoler           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-t_images	put_sprites(t_mlx mlx)
+t_images	put_sprites(t_mlx *mlx)
 {
 	int			v;
 	int			i;
 	int			height;
 
-	allocate_assets(&mlx.assets, mlx.init);
-	height = mlx.read_map.y / 32;
-	mlx.assets.y = 0;
+	allocate_assets(&mlx->assets, mlx->init);
+	height = mlx->read_map.y / 32;
+	mlx->assets.y = 0;
 	v = 0;
 	while (v < height)
 	{
-		mlx.assets.x = 0;
+		mlx->assets.x = 0;
 		i = 0;
-		while (mlx.read_map.map[v][i])
+		while (mlx->read_map.map[v][i])
 		{
-			put_image_into_screen(mlx, mlx.read_map.map[v][i], mlx.assets);
-			mlx.assets.x += 32;
+			put_image_into_screen(mlx, mlx->read_map.map[v][i], mlx->assets);
+			mlx->assets.x += 32;
 			i++;
 		}
-		mlx.assets.y += 32;
+		mlx->assets.y += 32;
 		v++;
 	}
-	return (mlx.assets);
+	return (mlx->assets);
 }
 
 void	open_window(t_mlx *mlx)
@@ -43,13 +43,11 @@ void	open_window(t_mlx *mlx)
 	mlx->init = mlx_init();
 	mlx->window = mlx_new_window(mlx->init, mlx->read_map.x, \
 	mlx->read_map.y, "FT Ninja Frog, So Long");
-	put_sprites(*mlx);
-	mlx_key_hook(mlx->window, &key_hook, &mlx);
-	mlx_hook(mlx->window, 04, 1L<<5, close_window, &mlx);
-	// mlx_mouse_hook(mlx->window, cross_mouse_hook, &mlx);
+	put_sprites(mlx);
+	mlx_loop_hook(mlx->init, &no_event_loop, mlx);
+	mlx_key_hook(mlx->window, &key_hook, mlx);
+	mlx_hook(mlx->window, 17, 0, &close_window, mlx);
 	mlx_loop(mlx->init);
-	mlx_destroy_display(mlx->init);
-	free(mlx->init);
 }
 
 int	get_map_size(t_map *read_map)
@@ -76,6 +74,7 @@ int	get_map_size(t_map *read_map)
 	}
 	read_map->map = ft_split(map, '\n');
 	//same function that verify all lines is just 1
+	//verify if is a valid map -> has one of each assets kind
 	read_map->x *= 32;
 	read_map->y = height * 32;
 	//error if *x == *y
@@ -90,19 +89,17 @@ int	main(int argc, char *argv[])
 	t_mlx	mlx;
 	int		error;
 
-	//TODO verify error in arguments
-	//if path exist
-	//if is a valid map -> has one of each assets kind
 	ft_printf("%d\n", argc);
 	mlx.read_map.fd = open(argv[1], O_RDONLY);
 	error = get_map_size(&mlx.read_map);
 	close(mlx.read_map.fd);
-	//verify error
 	if (error)
 		exit(0);
 	open_window(&mlx);
 	return (0);
 }
+
+//TODO verify error in arguments
 
 // If any misconfiguration of any kind is encountered in the file,
 // the program must exit in a clean way, and return "Error\n" followed
