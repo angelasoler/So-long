@@ -4,7 +4,7 @@ CCW=cc -Wall -Werror -Wextra
 
 X_FLAGS=-lX11 -lXext -lmlx
 
-SRC=so_long.c so_long_utils.c
+SRC=so_long.c so_long_utils.c so_long_events.c
 
 OBJ=$(SRC:.c=.o)
 

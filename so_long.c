@@ -6,7 +6,7 @@
 /*   By: asoler <asoler@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 14:08:05 by asoler            #+#    #+#             */
-/*   Updated: 2022/07/12 16:51:25 by asoler           ###   ########.fr       */
+/*   Updated: 2022/07/12 21:02:06 by asoler           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,26 +14,30 @@
 
 t_images	put_sprites(t_mlx *mlx)
 {
-	int			v;
-	int			i;
-	int			height;
+	int	line;
+	int	row;
+	int	height;
 
-	allocate_assets(&mlx->assets, mlx->init);
 	height = mlx->read_map.y / 32;
 	mlx->assets.y = 0;
-	v = 0;
-	while (v < height)
+	line = 0;
+	while (line < height)
 	{
 		mlx->assets.x = 0;
-		i = 0;
-		while (mlx->read_map.map[v][i])
+		row = 0;
+		while (mlx->read_map.map[line][row])
 		{
-			put_image_into_screen(mlx, mlx->read_map.map[v][i], mlx->assets);
+			put_image_into_screen(mlx, mlx->read_map.map[line][row], mlx->assets);
+			if (mlx->read_map.map[line][row] == 'P')
+			{
+				mlx->assets.player_position.x = line;
+				mlx->assets.player_position.y = row;
+			}
 			mlx->assets.x += 32;
-			i++;
+			row++;
 		}
 		mlx->assets.y += 32;
-		v++;
+		line++;
 	}
 	return (mlx->assets);
 }
@@ -43,10 +47,11 @@ void	open_window(t_mlx *mlx)
 	mlx->init = mlx_init();
 	mlx->window = mlx_new_window(mlx->init, mlx->read_map.x, \
 	mlx->read_map.y, "FT Ninja Frog, So Long");
+	allocate_assets(&mlx->assets, mlx->init);
 	put_sprites(mlx);
 	mlx_loop_hook(mlx->init, &no_event_loop, mlx);
-	mlx_key_hook(mlx->window, &key_hook, mlx);
-	mlx_hook(mlx->window, 17, 0, &close_window, mlx);
+	mlx_key_hook(mlx->window, &key_input, mlx);
+	mlx_hook(mlx->window, 17, 0, &close_window, &mlx);
 	mlx_loop(mlx->init);
 }
 

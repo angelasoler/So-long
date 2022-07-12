@@ -6,12 +6,11 @@
 /*   By: asoler <asoler@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/07 00:50:18 by asoler            #+#    #+#             */
-/*   Updated: 2022/07/12 16:52:08 by asoler           ###   ########.fr       */
+/*   Updated: 2022/07/12 21:02:56 by asoler           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-#include <X11/keysym.h>
 
 void	allocate_assets(t_images *assets, void *init)
 {
@@ -68,11 +67,13 @@ int	close_window(t_mlx *mlx)
 	exit (0);
 }
 
-int	key_hook(int key, t_mlx *mlx)
+int	key_input(int key, t_mlx *mlx)
 {
 	ft_printf("%d\n\n\n\n", key);
 	if (key == XK_Escape)
 		close_window(mlx);
+	else
+		move_player(mlx, key);
 	return (0);
 }
 

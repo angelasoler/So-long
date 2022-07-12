@@ -6,12 +6,13 @@
 /*   By: asoler <asoler@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 00:04:34 by asoler            #+#    #+#             */
-/*   Updated: 2022/07/12 16:47:36 by asoler           ###   ########.fr       */
+/*   Updated: 2022/07/12 21:06:28 by asoler           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SO_LONG_H
 # include <mlx.h>
+# include <X11/keysym.h>
 # include "includes/get_next_line.h"
 # include "includes/libft.h"
 # include <stdlib.h>
@@ -23,17 +24,24 @@
 # define EXIT_PATH "images/door.xpm"
 # define BACKGROUND_PATH "images/wood_background.xpm"
 
+typedef struct s_player_position
+{
+	int		x;
+	int		y;
+} t_player_position;
+
 typedef struct s_images
 {
-	void	*wall;
+	void		*wall;
 	void	*back_ground;
 	void	*collectibles;
-	void	*exit;
+	void		*exit;
 	void	*player;
 	int		x;
 	int		y;
 	int		height;
 	int		width;
+	t_player_position	player_position;
 }	t_images;
 
 typedef struct s_map
@@ -52,10 +60,12 @@ typedef struct s_mlx
 	t_map		read_map;
 }	t_mlx;
 
-void	allocate_assets(t_images *assets, void *init);
-void	put_image_into_screen(t_mlx *mlx, char map_composing, t_images assets);
-int		key_hook(int key, t_mlx *mlx);
-int		close_window(t_mlx *mlx);
-int		no_event_loop(t_mlx *mlx);
+void		allocate_assets(t_images *assets, void	 *init);
+void		put_image_into_screen(t_mlx *mlx, char map_composing, t_images assets);
+void		move_player(t_mlx *mlx, int key);
+int			key_input(int key, t_mlx *mlx);
+int			close_window(t_mlx *mlx);
+int			no_event_loop(t_mlx *mlx);
+t_images	put_sprites(t_mlx *mlx);
 
 #endif
