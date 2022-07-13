@@ -4,17 +4,24 @@ CCW=cc -Wall -Werror -Wextra
 
 X_FLAGS=-lX11 -lXext -lmlx
 
-SRC=so_long.c so_long_utils.c so_long_events.c
+MAKE_LIBFT = libft.a
 
-OBJ=$(SRC:.c=.o)
+SRC =	so_long.c \
+		so_long_utils.c \
+		so_long_events.c
+
+OBJ = $(SRC:.c=.o)
 
 all: $(NAME)
 
-$(NAME): $(OBJ)
+$(NAME): $(OBJ) $(MAKE_LIBFT)
 	$(CCW) $(OBJ) $(X_FLAGS) -L ./ -lft -o $(NAME)
 
 %.o: %.c
 	$(CCW) -g3 $(FLAGS) -c $< -o $@
+
+$(MAKE_LIBFT):
+	make -C libft/
 
 re: fclean all
 
