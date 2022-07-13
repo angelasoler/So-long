@@ -6,7 +6,7 @@
 /*   By: asoler <asoler@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 00:04:34 by asoler            #+#    #+#             */
-/*   Updated: 2022/07/12 21:06:28 by asoler           ###   ########.fr       */
+/*   Updated: 2022/07/13 13:13:32 by asoler           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,11 @@
 # define EXIT_PATH "images/door.xpm"
 # define BACKGROUND_PATH "images/wood_background.xpm"
 
-typedef struct s_player_position
+typedef struct s_position
 {
 	int		x;
 	int		y;
-} t_player_position;
+} t_position;
 
 typedef struct s_images
 {
@@ -41,7 +41,7 @@ typedef struct s_images
 	int		y;
 	int		height;
 	int		width;
-	t_player_position	player_position;
+	t_position	p_position;
 }	t_images;
 
 typedef struct s_map
@@ -56,13 +56,14 @@ typedef struct s_mlx
 {
 	void		*init;
 	void		*window;
+	int		joker;
 	t_images	assets;
 	t_map		read_map;
 }	t_mlx;
 
 void		allocate_assets(t_images *assets, void	 *init);
 void		put_image_into_screen(t_mlx *mlx, char map_composing, t_images assets);
-void		move_player(t_mlx *mlx, int key);
+void		move_player(t_mlx *mlx, int x, int y, int key);
 int			key_input(int key, t_mlx *mlx);
 int			close_window(t_mlx *mlx);
 int			no_event_loop(t_mlx *mlx);

@@ -2,3 +2,5 @@
 .nfs
 .gdb_history
 vgcore.*
+one_step_back
+.gitignore

@@ -6,7 +6,7 @@
 /*   By: asoler <asoler@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 14:08:05 by asoler            #+#    #+#             */
-/*   Updated: 2022/07/12 21:02:06 by asoler           ###   ########.fr       */
+/*   Updated: 2022/07/13 13:13:36 by asoler           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,8 @@ t_images	put_sprites(t_mlx *mlx)
 			put_image_into_screen(mlx, mlx->read_map.map[line][row], mlx->assets);
 			if (mlx->read_map.map[line][row] == 'P')
 			{
-				mlx->assets.player_position.x = line;
-				mlx->assets.player_position.y = row;
+				mlx->assets.p_position.x = row;
+				mlx->assets.p_position.y = line;
 			}
 			mlx->assets.x += 32;
 			row++;
@@ -51,7 +51,7 @@ void	open_window(t_mlx *mlx)
 	put_sprites(mlx);
 	mlx_loop_hook(mlx->init, &no_event_loop, mlx);
 	mlx_key_hook(mlx->window, &key_input, mlx);
-	mlx_hook(mlx->window, 17, 0, &close_window, &mlx);
+	mlx_hook(mlx->window, 17, 0, &close_window, mlx);
 	mlx_loop(mlx->init);
 }
 

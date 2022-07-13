@@ -6,7 +6,7 @@
 /*   By: asoler <asoler@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/07 00:50:18 by asoler            #+#    #+#             */
-/*   Updated: 2022/07/12 21:02:56 by asoler           ###   ########.fr       */
+/*   Updated: 2022/07/13 13:24:25 by asoler           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,14 +72,14 @@ int	key_input(int key, t_mlx *mlx)
 	ft_printf("%d\n\n\n\n", key);
 	if (key == XK_Escape)
 		close_window(mlx);
-	else
-		move_player(mlx, key);
+	else if (key == XK_w || key == XK_a || key == XK_s || key == XK_d)
+		move_player(mlx, mlx->assets.p_position.x, mlx->assets.p_position.y, key);
 	return (0);
 }
 
 int	no_event_loop(t_mlx *mlx)
 {
-	mlx->read_map.x = 0;
+	mlx->joker = 0;
 	return (0);
 }
 
