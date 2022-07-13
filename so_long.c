@@ -6,28 +6,27 @@
 /*   By: asoler <asoler@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 14:08:05 by asoler            #+#    #+#             */
-/*   Updated: 2022/07/13 13:13:36 by asoler           ###   ########.fr       */
+/*   Updated: 2022/07/13 19:01:13 by asoler           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-t_images	put_sprites(t_mlx *mlx)
+void	put_sprites(t_mlx *mlx)
 {
 	int	line;
 	int	row;
-	int	height;
 
-	height = mlx->read_map.y / 32;
 	mlx->assets.y = 0;
 	line = 0;
-	while (line < height)
+	while (line < mlx->read_map.height)
 	{
 		mlx->assets.x = 0;
 		row = 0;
 		while (mlx->read_map.map[line][row])
 		{
-			put_image_into_screen(mlx, mlx->read_map.map[line][row], mlx->assets);
+			put_image_into_screen(mlx, mlx->read_map.map[line][row], \
+			mlx->assets);
 			if (mlx->read_map.map[line][row] == 'P')
 			{
 				mlx->assets.p_position.x = row;
@@ -39,7 +38,6 @@ t_images	put_sprites(t_mlx *mlx)
 		mlx->assets.y += 32;
 		line++;
 	}
-	return (mlx->assets);
 }
 
 void	open_window(t_mlx *mlx)
@@ -59,31 +57,24 @@ int	get_map_size(t_map *read_map)
 {
 	char	*line;
 	char	*map;
-	int		height;
 
 	if (read_map->fd == -1)
 		return (1);
 	line = get_next_line(read_map->fd);
 	map = malloc(sizeof(char) * 1);
 	*map = 0;
-	height = 0;
+	read_map->height = 0;
 	while (line)
 	{
 		read_map->x = (int)ft_strlen(line) - 1;
 		map = ft_strjoin(map, line);
-		//function if height 0 verify all is 1
-		//and all first and last is 1 on other lines
-		height++;
+		read_map->height++;
 		free(line);
 		line = get_next_line(read_map->fd);
 	}
 	read_map->map = ft_split(map, '\n');
-	//same function that verify all lines is just 1
-	//verify if is a valid map -> has one of each assets kind
 	read_map->x *= 32;
-	read_map->y = height * 32;
-	//error if *x == *y
-	//map must be rectangular?
+	read_map->y = read_map->height * 32;
 	free(line);
 	free(map);
 	return (0);
@@ -94,7 +85,8 @@ int	main(int argc, char *argv[])
 	t_mlx	mlx;
 	int		error;
 
-	ft_printf("%d\n", argc);
+	if (argc != 2)
+		return (0);
 	mlx.read_map.fd = open(argv[1], O_RDONLY);
 	error = get_map_size(&mlx.read_map);
 	close(mlx.read_map.fd);
@@ -105,7 +97,12 @@ int	main(int argc, char *argv[])
 }
 
 //TODO verify error in arguments
-
-// If any misconfiguration of any kind is encountered in the file,
+// - file name most end with .ber type
+// - map most be rectangular
+// - map most be close, surrounded by walls -> 1
+// - most have at list one of each -> C,P,E,0
+// ** maxamum size?
+// 
+// If any misconfiguration of any kind is encountered in the (.ber) file,
 // the program must exit in a clean way, and return "Error\n" followed
 // by an explicit error message of your choice.

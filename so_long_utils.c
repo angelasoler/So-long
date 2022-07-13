@@ -6,7 +6,7 @@
 /*   By: asoler <asoler@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/07 00:50:18 by asoler            #+#    #+#             */
-/*   Updated: 2022/07/13 13:24:25 by asoler           ###   ########.fr       */
+/*   Updated: 2022/07/13 19:05:55 by asoler           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,11 +69,11 @@ int	close_window(t_mlx *mlx)
 
 int	key_input(int key, t_mlx *mlx)
 {
-	ft_printf("%d\n\n\n\n", key);
 	if (key == XK_Escape)
 		close_window(mlx);
 	else if (key == XK_w || key == XK_a || key == XK_s || key == XK_d)
-		move_player(mlx, mlx->assets.p_position.x, mlx->assets.p_position.y, key);
+		move_player(mlx, mlx->assets.p_position.x, \
+		mlx->assets.p_position.y, key);
 	return (0);
 }
 
@@ -82,17 +82,3 @@ int	no_event_loop(t_mlx *mlx)
 	mlx->joker = 0;
 	return (0);
 }
-
-//TODO
-// - see if window is ereasing when moving
-// - see how to make transparency for player and collectibles
-// - make error function
-//		* verify map
-//				- has all wall entire
-//				- has almost one of each asset beside the walls
-//		* if fd != 3 -> or == -1
-// - close window events: clicking closing botton and with esc key
-// - move player
-//		*player eats a collectable, -> erase collectible
-//		*when its in front exit over program 
-			// -> but just when there's no more collectibles
