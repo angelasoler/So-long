@@ -6,7 +6,7 @@
 /*   By: asoler <asoler@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/07 00:50:18 by asoler            #+#    #+#             */
-/*   Updated: 2022/07/13 19:05:55 by asoler           ###   ########.fr       */
+/*   Updated: 2022/07/13 23:01:57 by asoler           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,14 @@
 
 void	allocate_assets(t_images *assets, void *init)
 {
-	assets->wall = mlx_xpm_file_to_image \
-	(init, WALL_PATH, &assets->height, &assets->width);
-	assets->back_ground = mlx_xpm_file_to_image \
-	(init, BACKGROUND_PATH, &assets->height, &assets->width);
-	assets->collectibles = mlx_xpm_file_to_image \
-	(init, COLLECTIBLES_PATH, &assets->height, &assets->width);
-	assets->exit = mlx_xpm_file_to_image \
-	(init, EXIT_PATH, &assets->height, &assets->width);
-	assets->player = mlx_xpm_file_to_image \
-	(init, PLAYER_PATH, &assets->height, &assets->width);
+	int	x;
+	int	y;
+
+	assets->wall = mlx_xpm_file_to_image(init, WALL_PATH, &x, &y);
+	assets->bck_grnd = mlx_xpm_file_to_image(init, BCKGRND_PATH, &x, &y);
+	assets->collect = mlx_xpm_file_to_image(init, COLLECT_PATH, &x, &y);
+	assets->exit = mlx_xpm_file_to_image(init, EXIT_PATH, &x, &y);
+	assets->player = mlx_xpm_file_to_image(init, PLAYER_PATH, &x, &y);
 }
 
 void	put_image_into_screen(t_mlx *mlx, char map_composing, t_images assets)
@@ -33,10 +31,10 @@ void	put_image_into_screen(t_mlx *mlx, char map_composing, t_images assets)
 	(mlx->init, mlx->window, assets.wall, assets.x, assets.y);
 	else if (map_composing == '0')
 		mlx_put_image_to_window \
-	(mlx->init, mlx->window, assets.back_ground, assets.x, assets.y);
+	(mlx->init, mlx->window, assets.bck_grnd, assets.x, assets.y);
 	else if (map_composing == 'C')
 		mlx_put_image_to_window \
-	(mlx->init, mlx->window, assets.collectibles, assets.x, assets.y);
+	(mlx->init, mlx->window, assets.collect, assets.x, assets.y);
 	else if (map_composing == 'E')
 		mlx_put_image_to_window \
 	(mlx->init, mlx->window, assets.exit, assets.x, assets.y);
@@ -51,8 +49,8 @@ int	close_window(t_mlx *mlx)
 
 	i = 0;
 	mlx_destroy_image(mlx->init, mlx->assets.wall);
-	mlx_destroy_image(mlx->init, mlx->assets.back_ground);
-	mlx_destroy_image(mlx->init, mlx->assets.collectibles);
+	mlx_destroy_image(mlx->init, mlx->assets.bck_grnd);
+	mlx_destroy_image(mlx->init, mlx->assets.collect);
 	mlx_destroy_image(mlx->init, mlx->assets.exit);
 	mlx_destroy_image(mlx->init, mlx->assets.player);
 	while (mlx->read_map.map[i])

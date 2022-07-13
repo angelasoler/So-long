@@ -6,7 +6,7 @@
 /*   By: asoler <asoler@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 00:04:34 by asoler            #+#    #+#             */
-/*   Updated: 2022/07/13 19:05:31 by asoler           ###   ########.fr       */
+/*   Updated: 2022/07/13 22:55:57 by asoler           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,9 @@
 # define SO_LONG_H
 # define PLAYER_PATH "images/ninja_frog.xpm"
 # define WALL_PATH "images/wall_brick.xpm"
-# define COLLECTIBLES_PATH "images/raspberry_pie.xpm"
+# define COLLECT_PATH "images/raspberry_pie.xpm"
 # define EXIT_PATH "images/door.xpm"
-# define BACKGROUND_PATH "images/wood_background.xpm"
+# define BCKGRND_PATH "images/wood_background.xpm"
 
 typedef struct s_position
 {
@@ -33,14 +33,12 @@ typedef struct s_position
 typedef struct s_images
 {
 	void		*wall;
-	void		*back_ground;
-	void		*collectibles;
+	void		*bck_grnd;
+	void		*collect;
 	void		*exit;
 	void		*player;
 	int			x;
 	int			y;
-	int			height;
-	int			width;
 	t_position	p_position;
 }	t_images;
 
