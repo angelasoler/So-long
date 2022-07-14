@@ -6,7 +6,7 @@
 /*   By: asoler <asoler@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 00:04:34 by asoler            #+#    #+#             */
-/*   Updated: 2022/07/13 22:55:57 by asoler           ###   ########.fr       */
+/*   Updated: 2022/07/14 02:40:54 by asoler           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@
 # include "includes/libft.h"
 # include <stdlib.h>
 # include <fcntl.h>
+# include <string.h>
+# include <errno.h>
 # define SO_LONG_H
 # define PLAYER_PATH "images/ninja_frog.xpm"
 # define WALL_PATH "images/wall_brick.xpm"
@@ -67,5 +69,6 @@ int		key_input(int key, t_mlx *mlx);
 int		close_window(t_mlx *mlx);
 int		no_event_loop(t_mlx *mlx);
 void	put_sprites(t_mlx *mlx);
+int		verify_map_file_type(char *map_argument);
 
 #endif

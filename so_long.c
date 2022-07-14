@@ -6,7 +6,7 @@
 /*   By: asoler <asoler@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 14:08:05 by asoler            #+#    #+#             */
-/*   Updated: 2022/07/13 23:06:02 by asoler           ###   ########.fr       */
+/*   Updated: 2022/07/14 02:58:54 by asoler           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,8 +58,6 @@ int	get_map_size(t_map *read_map)
 	char	*line;
 	char	*map;
 
-	if (read_map->fd == -1)
-		return (1);
 	line = get_next_line(read_map->fd);
 	map = malloc(sizeof(char) * 1);
 	*map = 0;
@@ -75,6 +73,7 @@ int	get_map_size(t_map *read_map)
 	read_map->map = ft_split(map, '\n');
 	read_map->x *= 32;
 	read_map->y = read_map->height * 32;
+	// error_verify = verify_map(read_map->map);
 	free(line);
 	free(map);
 	return (0);
@@ -85,13 +84,21 @@ int	main(int argc, char *argv[])
 	t_mlx	mlx;
 	int		error;
 
-	if (argc != 2)
-		return (0);
+	if (argc != 2 || verify_map_file_type(argv[1]))
+	{
+		ft_printf("Error: %s\n", strerror(EPERM));
+		exit(0);
+	}
 	mlx.read_map.fd = open(argv[1], O_RDONLY);
+	if (mlx.read_map.fd == -1)
+		ft_printf("Error: %s\n", strerror(errno));
 	error = get_map_size(&mlx.read_map);
 	close(mlx.read_map.fd);
 	if (error)
+	{
+		// free_map(&mlx.read_map.map);
 		exit(0);
+	}
 	open_window(&mlx);
 	return (0);
 }

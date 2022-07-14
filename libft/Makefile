@@ -9,6 +9,8 @@ SRC = 	ft_strlen.c\
 		ft_toupper.c\
 		ft_strjoin.c\
 		ft_strdup.c\
+		ft_strnstr.c\
+		ft_strncmp.c\
 		ft_split.c\
 		get_next_line.c\
 		get_next_line_utils.c\
