@@ -6,7 +6,7 @@
 /*   By: asoler <asoler@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/12 20:44:35 by asoler            #+#    #+#             */
-/*   Updated: 2022/07/15 17:36:51 by asoler           ###   ########.fr       */
+/*   Updated: 2022/07/16 01:37:09 by asoler           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,15 +67,78 @@ void	free_map(char **map)
 	}
 	free(map);
 }
-// int	error_verify(char **map)
-// {
-// 	int	i;
 
-// 	while(map[i])
-// 	{
-// 		i++;
-// 	}
-// }
+int	different_characters(char *line)
+{
+	// ft_printf("%s\n", line);
+	while (*line)
+	{
+		if (*line != 'C' && *line != 'E' && *line != 'P' && \
+		*line != '0' && *line != '1')
+			return (1);
+		line++;
+	}
+	return (0);
+}
+
+int	wall_sorrounded(t_map *read_map)
+{
+	int	x;
+	int	y;
+	int	y_backup;
+	int	x_backup;
+
+	x = read_map->x - 1;
+	y = read_map->height - 1;
+	x_backup = x;
+	y_backup = y;
+	// ft_printf("x = %d\n y = %d\n", x, y);
+	while (y_backup >= 0)
+	{
+		if (read_map->map[y_backup][0] != '1' || \
+		read_map->map[y_backup][x_backup] != '1')
+			return (1);
+		y_backup--;
+	}
+	while (x >= 0)
+	{
+		if (read_map->map[0][x] != '1' || read_map->map[y][x] != '1')
+			return (1);
+		x--;
+	}
+	return (0);
+}
+
+int	verify_map(t_map *read_map)
+{
+	t_map_characters	characters;
+	int					i;
+
+
+	i = 0;
+	characters.c = 0;
+	characters.p = 0;
+	characters.e = 0;
+	characters.zero = 0;
+	while (read_map->map[i])
+	{
+		if ((ft_strlen(read_map->map[i]) != (size_t)read_map->x) || \
+		different_characters(read_map->map[i]) || wall_sorrounded(read_map))
+			return (1);
+		if (ft_strchr(read_map->map[i], 'C'))
+			characters.c++;
+		if (ft_strchr(read_map->map[i], '0'))
+			characters.zero++;
+		if (ft_strchr(read_map->map[i], 'P'))
+			characters.p++;
+		if (ft_strchr(read_map->map[i], 'E'))
+			characters.e++;
+		i++;
+	}
+	if (characters.c == 0 || characters.e != 1 || characters.p != 1 || characters.zero == 0)
+		return (1);
+	return (0);
+}
 
 int	verify_map_file_type(char *map_argument)
 {
@@ -84,7 +147,7 @@ int	verify_map_file_type(char *map_argument)
 
 	len = ft_strlen(map_argument);
 	type = ft_strnstr(map_argument, ".ber", len);
-	if (!type || *(type + 4) != '\0')
+	if (!type || (*(type + 4) != '\0'))
 		return (1);
 	return (0);
 }

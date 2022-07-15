@@ -6,7 +6,7 @@
 /*   By: asoler <asoler@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 14:08:05 by asoler            #+#    #+#             */
-/*   Updated: 2022/07/15 18:08:55 by asoler           ###   ########.fr       */
+/*   Updated: 2022/07/16 01:42:08 by asoler           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@ int	get_map_size(t_map *read_map)
 {
 	char	*line;
 	char	*map;
+	int		error_verify;
 
 	line = get_next_line(read_map->fd);
 	map = malloc(sizeof(char) * 1);
@@ -71,9 +72,9 @@ int	get_map_size(t_map *read_map)
 		line = get_next_line(read_map->fd);
 	}
 	read_map->map = ft_split(map, '\n');
+	error_verify = verify_map(read_map);
 	read_map->x *= 32;
 	read_map->y = read_map->height * 32;
-	// error_verify = verify_map(read_map->map);
 	free(line);
 	free(map);
 	if (read_map->x == read_map->y || error_verify)
