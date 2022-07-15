@@ -6,7 +6,7 @@
 /*   By: asoler <asoler@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/12 20:44:35 by asoler            #+#    #+#             */
-/*   Updated: 2022/07/15 17:18:56 by asoler           ###   ########.fr       */
+/*   Updated: 2022/07/15 17:36:51 by asoler           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,18 @@ void	move_player(t_mlx *mlx, int x, int y, int key)
 	}
 }
 
+void	free_map(char **map)
+{
+	int	i;
+
+	i = 0;
+	while (map[i])
+	{
+		free(map[i]);
+		i++;
+	}
+	free(map);
+}
 // int	error_verify(char **map)
 // {
 // 	int	i;
@@ -72,9 +84,7 @@ int	verify_map_file_type(char *map_argument)
 
 	len = ft_strlen(map_argument);
 	type = ft_strnstr(map_argument, ".ber", len);
-	if (!type)
-		return (1);
-	else if (*(type + 4) != '\0')
+	if (!type || *(type + 4) != '\0')
 		return (1);
 	return (0);
 }

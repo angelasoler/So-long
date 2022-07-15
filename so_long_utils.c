@@ -6,7 +6,7 @@
 /*   By: asoler <asoler@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/07 00:50:18 by asoler            #+#    #+#             */
-/*   Updated: 2022/07/15 17:19:16 by asoler           ###   ########.fr       */
+/*   Updated: 2022/07/15 17:58:55 by asoler           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,20 +45,12 @@ void	put_image_into_screen(t_mlx *mlx, char map_composing, t_images assets)
 
 int	close_window(t_mlx *mlx)
 {
-	int	i;
-
-	i = 0;
 	mlx_destroy_image(mlx->init, mlx->assets.wall);
 	mlx_destroy_image(mlx->init, mlx->assets.bck_grnd);
 	mlx_destroy_image(mlx->init, mlx->assets.collect);
 	mlx_destroy_image(mlx->init, mlx->assets.exit);
 	mlx_destroy_image(mlx->init, mlx->assets.player);
-	while (mlx->read_map.map[i])
-	{
-		free(mlx->read_map.map[i]);
-		i++;
-	}
-	free(mlx->read_map.map);
+	free_map(mlx->read_map.map);
 	mlx_destroy_window(mlx->init, mlx->window);
 	mlx_destroy_display(mlx->init);
 	free(mlx->init);

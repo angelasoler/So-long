@@ -6,7 +6,7 @@
 /*   By: asoler <asoler@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 00:04:34 by asoler            #+#    #+#             */
-/*   Updated: 2022/07/14 02:40:54 by asoler           ###   ########.fr       */
+/*   Updated: 2022/07/15 17:35:41 by asoler           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,5 +70,6 @@ int		close_window(t_mlx *mlx);
 int		no_event_loop(t_mlx *mlx);
 void	put_sprites(t_mlx *mlx);
 int		verify_map_file_type(char *map_argument);
+void	free_map(char **map);
 
 #endif

@@ -29,6 +29,6 @@ fclean: clean
 	rm -rf $(NAME)
 
 clean:
-	rm -rf *.o  *.a
+	rm -rf *.o
 
 .PONHY: re fclean clean all
