@@ -4,13 +4,14 @@ CC = gcc
 
 CFLAGS = -Wall -Werror -Wextra
 
-SRC = 	ft_strlen.c\
-		ft_itoa.c\
+SRC = 	ft_itoa.c\
 		ft_toupper.c\
+		ft_strlen.c\
 		ft_strjoin.c\
 		ft_strdup.c\
 		ft_strnstr.c\
 		ft_strncmp.c\
+		ft_strchr.c\
 		ft_split.c\
 		get_next_line.c\
 		get_next_line_utils.c\

@@ -6,11 +6,25 @@
 /*   By: asoler <asoler@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/12 20:44:35 by asoler            #+#    #+#             */
-/*   Updated: 2022/07/14 03:09:05 by asoler           ###   ########.fr       */
+/*   Updated: 2022/07/15 16:43:30 by asoler           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+
+int	get_into_exit_door(char	**map)
+{
+	int	i;
+
+	i = 0;
+	while (map[i])
+	{
+		if(ft_strchr(map[i], 'C'))
+			return (0);
+		i++;
+	}
+	return(1);
+}
 
 void	move_player(t_mlx *mlx, int x, int y, int key)
 {
@@ -27,6 +41,9 @@ void	move_player(t_mlx *mlx, int x, int y, int key)
 		next.x++;
 	else if (key == XK_s)
 		next.y++;
+	if (mlx->read_map.map[next.y][next.x] == 'E' && \
+	get_into_exit_door(mlx->read_map.map))
+		close_window(mlx);
 	if (mlx->read_map.map[next.y][next.x] == '0' || \
 	mlx->read_map.map[next.y][next.x] == 'C')
 	{
