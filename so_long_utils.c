@@ -6,7 +6,7 @@
 /*   By: asoler <asoler@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/07 00:50:18 by asoler            #+#    #+#             */
-/*   Updated: 2022/07/13 23:01:57 by asoler           ###   ########.fr       */
+/*   Updated: 2022/07/15 17:19:16 by asoler           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,8 @@ int	key_input(int key, t_mlx *mlx)
 {
 	if (key == XK_Escape)
 		close_window(mlx);
-	else if (key == XK_w || key == XK_a || key == XK_s || key == XK_d)
+	else if (key == XK_w || key == XK_a || key == XK_s || key == XK_d || \
+	key == XK_Up || key == XK_Down || key == XK_Right || key == XK_Left)
 		move_player(mlx, mlx->assets.p_position.x, \
 		mlx->assets.p_position.y, key);
 	return (0);

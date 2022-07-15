@@ -6,24 +6,25 @@
 /*   By: asoler <asoler@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/12 20:44:35 by asoler            #+#    #+#             */
-/*   Updated: 2022/07/15 16:43:30 by asoler           ###   ########.fr       */
+/*   Updated: 2022/07/15 17:18:56 by asoler           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int	get_into_exit_door(char	**map)
+void	get_into_exit_door(t_mlx *mlx, int x, int y)
 {
 	int	i;
 
 	i = 0;
-	while (map[i])
+	while (mlx->read_map.map[i])
 	{
-		if(ft_strchr(map[i], 'C'))
-			return (0);
+		if (mlx->read_map.map[y][x] != 'E' || \
+		ft_strchr(mlx->read_map.map[i], 'C'))
+			return ;
 		i++;
 	}
-	return(1);
+	close_window(mlx);
 }
 
 void	move_player(t_mlx *mlx, int x, int y, int key)
@@ -33,17 +34,15 @@ void	move_player(t_mlx *mlx, int x, int y, int key)
 
 	next.x = x;
 	next.y = y;
-	if (key == XK_w)
+	if (key == XK_w || key == XK_Up)
 		next.y--;
-	else if (key == XK_a)
+	else if (key == XK_a || key == XK_Left)
 		next.x--;
-	else if (key == XK_d)
+	else if (key == XK_d || key == XK_Right)
 		next.x++;
-	else if (key == XK_s)
+	else if (key == XK_s || key == XK_Down)
 		next.y++;
-	if (mlx->read_map.map[next.y][next.x] == 'E' && \
-	get_into_exit_door(mlx->read_map.map))
-		close_window(mlx);
+	get_into_exit_door(mlx, next.x, next.y);
 	if (mlx->read_map.map[next.y][next.x] == '0' || \
 	mlx->read_map.map[next.y][next.x] == 'C')
 	{
