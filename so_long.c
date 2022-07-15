@@ -6,7 +6,7 @@
 /*   By: asoler <asoler@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 14:08:05 by asoler            #+#    #+#             */
-/*   Updated: 2022/07/16 01:42:08 by asoler           ###   ########.fr       */
+/*   Updated: 2022/07/16 01:56:43 by asoler           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,17 +62,18 @@ int	get_map_size(t_map *read_map)
 	line = get_next_line(read_map->fd);
 	map = malloc(sizeof(char) * 1);
 	*map = 0;
-	read_map->height = 0;
 	read_map->x = ft_strlen(line) - 1;
 	while (line)
 	{
+		if (line[0] == '\n')
+			error_verify = 1;
 		map = ft_strjoin(map, line);
-		read_map->height++;
 		free(line);
 		line = get_next_line(read_map->fd);
 	}
 	read_map->map = ft_split(map, '\n');
-	error_verify = verify_map(read_map);
+	read_map->height = get_map_height(read_map->map);
+	error_verify += verify_map(read_map);
 	read_map->x *= 32;
 	read_map->y = read_map->height * 32;
 	free(line);
@@ -108,11 +109,7 @@ int	main(int argc, char *argv[])
 }
 
 //TODO verify error in arguments
-// - file name most end with .ber type
-// - map most be rectangular
-// - map most be close, surrounded by walls -> 1
-// - most have at list one of each -> C,P,E,0
-// ** maxamum size?
+// ** maxamum size? -> make it scroll?
 // 
 // If any misconfiguration of any kind is encountered in the (.ber) file,
 // the program must exit in a clean way, and return "Error\n" followed

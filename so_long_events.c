@@ -6,7 +6,7 @@
 /*   By: asoler <asoler@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/12 20:44:35 by asoler            #+#    #+#             */
-/*   Updated: 2022/07/16 01:37:09 by asoler           ###   ########.fr       */
+/*   Updated: 2022/07/16 01:55:05 by asoler           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,18 @@ void	move_player(t_mlx *mlx, int x, int y, int key)
 	}
 }
 
+int	get_map_height(char **map)
+{
+	int	i;
+
+	i = 0;
+	while (map[i])
+	{
+		i++;
+	}
+	return (i);
+}
+
 void	free_map(char **map)
 {
 	int	i;
@@ -70,7 +82,6 @@ void	free_map(char **map)
 
 int	different_characters(char *line)
 {
-	// ft_printf("%s\n", line);
 	while (*line)
 	{
 		if (*line != 'C' && *line != 'E' && *line != 'P' && \
@@ -92,7 +103,6 @@ int	wall_sorrounded(t_map *read_map)
 	y = read_map->height - 1;
 	x_backup = x;
 	y_backup = y;
-	// ft_printf("x = %d\n y = %d\n", x, y);
 	while (y_backup >= 0)
 	{
 		if (read_map->map[y_backup][0] != '1' || \
@@ -153,7 +163,5 @@ int	verify_map_file_type(char *map_argument)
 }
 
 // TODO
-// - permit player get into exit and finish game
-// - read also arrow keys
 // - redraw screen after window or whatever overlap game
 		// => see expose a hook_loop functions doc

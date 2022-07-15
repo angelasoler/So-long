@@ -6,7 +6,7 @@
 /*   By: asoler <asoler@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 00:04:34 by asoler            #+#    #+#             */
-/*   Updated: 2022/07/16 01:20:36 by asoler           ###   ########.fr       */
+/*   Updated: 2022/07/16 01:48:28 by asoler           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,5 +80,6 @@ void	put_sprites(t_mlx *mlx);
 int		verify_map_file_type(char *map_argument);
 void	free_map(char **map);
 int		verify_map(t_map *read_map);
+int		get_map_height(char **map);
 
 #endif
