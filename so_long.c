@@ -6,13 +6,13 @@
 /*   By: asoler <asoler@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 14:08:05 by asoler            #+#    #+#             */
-/*   Updated: 2022/07/16 16:00:50 by asoler           ###   ########.fr       */
+/*   Updated: 2022/07/16 16:46:46 by asoler           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	put_sprites(t_mlx *mlx)
+int	put_sprites(t_mlx *mlx)
 {
 	int	line;
 	int	row;
@@ -38,6 +38,7 @@ void	put_sprites(t_mlx *mlx)
 		mlx->assets.y += 32;
 		line++;
 	}
+	return (0);
 }
 
 void	open_window(t_mlx *mlx)
@@ -47,8 +48,8 @@ void	open_window(t_mlx *mlx)
 	mlx->read_map.y, "FT Ninja Frog, So Long");
 	allocate_assets(&mlx->assets, mlx->init);
 	put_sprites(mlx);
-	// mlx_loop_hook(mlx->init, &no_event_loop, mlx);
 	mlx_key_hook(mlx->window, &key_input, mlx);
+	mlx_loop_hook(mlx->init, &put_sprites, mlx);
 	mlx_hook(mlx->window, 17, 0, &close_window, mlx);
 	mlx_loop(mlx->init);
 }

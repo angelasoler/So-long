@@ -6,7 +6,7 @@
 /*   By: asoler <asoler@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/12 20:44:35 by asoler            #+#    #+#             */
-/*   Updated: 2022/07/16 16:09:51 by asoler           ###   ########.fr       */
+/*   Updated: 2022/07/16 16:47:34 by asoler           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,13 +65,3 @@ int	key_input(int key, t_mlx *mlx)
 		mlx->assets.p_position.y, key);
 	return (0);
 }
-
-// int	no_event_loop(t_mlx *mlx)
-// {
-// 	mlx->joker = 0;
-// 	return (0);
-// }
-
-// TODO
-// - redraw screen after window or whatever overlap game
-		// => see expose a hook_loop functions doc

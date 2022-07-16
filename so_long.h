@@ -6,7 +6,7 @@
 /*   By: asoler <asoler@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 00:04:34 by asoler            #+#    #+#             */
-/*   Updated: 2022/07/16 16:30:48 by asoler           ###   ########.fr       */
+/*   Updated: 2022/07/16 16:47:55 by asoler           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,14 +53,12 @@ typedef struct s_map
 	int		height;
 	int		x;
 	int		y;
-	int		i;
 }	t_map;
 
 typedef struct s_mlx
 {
 	void		*init;
 	void		*window;
-	// int			joker;
 	t_images	assets;
 	t_map		read_map;
 }	t_mlx;
@@ -71,7 +69,7 @@ void	move_player(t_mlx *mlx, int x, int y, int key);
 int		key_input(int key, t_mlx *mlx);
 int		close_window(t_mlx *mlx);
 int		no_event_loop(t_mlx *mlx);
-void	put_sprites(t_mlx *mlx);
+int		put_sprites(t_mlx *mlx);
 int		verify_map_file_type(char *map_argument);
 void	free_map(char **map);
 int		verify_map(t_map *read_map);
