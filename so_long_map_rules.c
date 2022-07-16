@@ -6,7 +6,7 @@
 /*   By: asoler <asoler@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/16 14:22:36 by asoler            #+#    #+#             */
-/*   Updated: 2022/07/16 14:26:44 by asoler           ###   ########.fr       */
+/*   Updated: 2022/07/16 16:30:40 by asoler           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,27 +53,28 @@ int	wall_sorrounded(t_map *read_map)
 
 int	verify_map(t_map *read_map)
 {
-	t_map_characters	characters;
-	int					i;
+	int	characters[4];
+	int	i;
 
 	i = 0;
+	ft_bzero(characters, (sizeof(int) * 4));
 	while (read_map->map[i])
 	{
 		if ((ft_strlen(read_map->map[i]) != (size_t)read_map->x) || \
 		different_characters(read_map->map[i]) || wall_sorrounded(read_map))
 			return (1);
 		if (ft_strchr(read_map->map[i], 'C'))
-			characters.c++;
+			characters[0]++;
 		if (ft_strchr(read_map->map[i], '0'))
-			characters.zero++;
+			characters[1]++;
 		if (ft_strchr(read_map->map[i], 'P'))
-			characters.p++;
+			characters[2]++;
 		if (ft_strchr(read_map->map[i], 'E'))
-			characters.e++;
+			characters[3]++;
 		i++;
 	}
-	if (characters.c == 0 || characters.e != 1 || \
-	characters.p != 1 || characters.zero == 0)
+	if (!characters[0] || !characters[1] || \
+	characters[2] != 1 || characters[3] != 1)
 		return (1);
 	return (0);
 }

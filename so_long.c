@@ -6,7 +6,7 @@
 /*   By: asoler <asoler@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 14:08:05 by asoler            #+#    #+#             */
-/*   Updated: 2022/07/16 14:15:10 by asoler           ###   ########.fr       */
+/*   Updated: 2022/07/16 16:00:50 by asoler           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ void	open_window(t_mlx *mlx)
 	mlx->read_map.y, "FT Ninja Frog, So Long");
 	allocate_assets(&mlx->assets, mlx->init);
 	put_sprites(mlx);
-	mlx_loop_hook(mlx->init, &no_event_loop, mlx);
+	// mlx_loop_hook(mlx->init, &no_event_loop, mlx);
 	mlx_key_hook(mlx->window, &key_input, mlx);
 	mlx_hook(mlx->window, 17, 0, &close_window, mlx);
 	mlx_loop(mlx->init);
@@ -55,28 +55,27 @@ void	open_window(t_mlx *mlx)
 
 int	get_map_size(t_map *read_map)
 {
-	char	*line;
-	char	*map;
 	int		error_verify;
 
-	line = get_next_line(read_map->fd);
-	map = ft_calloc(1, sizeof(char));
-	read_map->x = ft_strlen(line) - 1;
-	while (line)
+	error_verify = 0;
+	read_map->str_map = ft_calloc(1, sizeof(char));
+	read_map->line = get_next_line(read_map->fd);
+	read_map->x = ft_strlen(read_map->line) - 1;
+	while (read_map->line)
 	{
-		if (line[0] == '\n')
+		if (read_map->line[0] == '\n')
 			error_verify = 1;
-		map = ft_strjoin(map, line);
-		free(line);
-		line = get_next_line(read_map->fd);
+		read_map->str_map = ft_strjoin(read_map->str_map, read_map->line);
+		free(read_map->line);
+		read_map->line = get_next_line(read_map->fd);
 	}
-	read_map->map = ft_split(map, '\n');
+	read_map->map = ft_split(read_map->str_map, '\n');
 	read_map->height = get_map_height(read_map->map);
 	error_verify += verify_map(read_map);
 	read_map->x *= 32;
 	read_map->y = read_map->height * 32;
-	free(line);
-	free(map);
+	free(read_map->line);
+	free(read_map->str_map);
 	if (read_map->x == read_map->y || error_verify)
 		return (1);
 	return (0);

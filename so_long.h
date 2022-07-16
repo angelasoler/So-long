@@ -6,7 +6,7 @@
 /*   By: asoler <asoler@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 00:04:34 by asoler            #+#    #+#             */
-/*   Updated: 2022/07/16 01:48:28 by asoler           ###   ########.fr       */
+/*   Updated: 2022/07/16 16:30:48 by asoler           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,14 +25,6 @@
 # define COLLECT_PATH "images/raspberry_pie.xpm"
 # define EXIT_PATH "images/door.xpm"
 # define BCKGRND_PATH "images/wood_background.xpm"
-
-typedef struct s_map_characters
-{
-	int	c;
-	int	p;
-	int	e;
-	int	zero;
-}	t_map_characters;
 
 typedef struct s_position
 {
@@ -55,17 +47,20 @@ typedef struct s_images
 typedef struct s_map
 {
 	char	**map;
+	char	*str_map;
+	char	*line;
 	int		fd;
 	int		height;
 	int		x;
 	int		y;
+	int		i;
 }	t_map;
 
 typedef struct s_mlx
 {
 	void		*init;
 	void		*window;
-	int			joker;
+	// int			joker;
 	t_images	assets;
 	t_map		read_map;
 }	t_mlx;
