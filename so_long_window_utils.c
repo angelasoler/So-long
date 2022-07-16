@@ -6,7 +6,7 @@
 /*   By: asoler <asoler@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/07 00:50:18 by asoler            #+#    #+#             */
-/*   Updated: 2022/07/15 17:58:55 by asoler           ###   ########.fr       */
+/*   Updated: 2022/07/16 14:28:54 by asoler           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,19 +57,27 @@ int	close_window(t_mlx *mlx)
 	exit (0);
 }
 
-int	key_input(int key, t_mlx *mlx)
+int	get_map_height(char **map)
 {
-	if (key == XK_Escape)
-		close_window(mlx);
-	else if (key == XK_w || key == XK_a || key == XK_s || key == XK_d || \
-	key == XK_Up || key == XK_Down || key == XK_Right || key == XK_Left)
-		move_player(mlx, mlx->assets.p_position.x, \
-		mlx->assets.p_position.y, key);
-	return (0);
+	int	i;
+
+	i = 0;
+	while (map[i])
+	{
+		i++;
+	}
+	return (i);
 }
 
-int	no_event_loop(t_mlx *mlx)
+void	free_map(char **map)
 {
-	mlx->joker = 0;
-	return (0);
+	int	i;
+
+	i = 0;
+	while (map[i])
+	{
+		free(map[i]);
+		i++;
+	}
+	free(map);
 }

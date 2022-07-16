@@ -6,7 +6,7 @@
 /*   By: asoler <asoler@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 14:08:05 by asoler            #+#    #+#             */
-/*   Updated: 2022/07/16 01:56:43 by asoler           ###   ########.fr       */
+/*   Updated: 2022/07/16 14:15:10 by asoler           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,8 +60,7 @@ int	get_map_size(t_map *read_map)
 	int		error_verify;
 
 	line = get_next_line(read_map->fd);
-	map = malloc(sizeof(char) * 1);
-	*map = 0;
+	map = ft_calloc(1, sizeof(char));
 	read_map->x = ft_strlen(line) - 1;
 	while (line)
 	{

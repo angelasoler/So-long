@@ -4,19 +4,21 @@ CC = gcc
 
 CFLAGS = -Wall -Werror -Wextra
 
-SRC = 	ft_itoa.c\
-		ft_toupper.c\
-		ft_strlen.c\
-		ft_strjoin.c\
-		ft_strdup.c\
-		ft_strnstr.c\
-		ft_strncmp.c\
-		ft_strchr.c\
-		ft_split.c\
-		get_next_line.c\
-		get_next_line_utils.c\
-		ft_printf.c\
-		ft_printf_other_convs.c\
+SRC = 	ft_itoa.c \
+		ft_toupper.c \
+		ft_calloc.c \
+		ft_bzero.c \
+		ft_strlen.c \
+		ft_strjoin.c \
+		ft_strdup.c \
+		ft_strnstr.c \
+		ft_strncmp.c \
+		ft_strchr.c \
+		ft_split.c \
+		get_next_line.c \
+		get_next_line_utils.c \
+		ft_printf.c \
+		ft_printf_other_convs.c \
 		ft_printf_int_convs.c
 
 OBJ=$(SRC:.c=.o)

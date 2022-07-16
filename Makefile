@@ -7,8 +7,9 @@ X_FLAGS=-lX11 -lXext -lmlx
 MAKE_LIBFT = libft.a
 
 SRC =	so_long.c \
-		so_long_utils.c \
-		so_long_events.c
+		so_long_window_utils.c \
+		so_long_events.c \
+		so_long_map_rules.c
 
 OBJ = $(SRC:.c=.o)
 
