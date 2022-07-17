@@ -1,8 +1,8 @@
-NAME=solong
+NAME = solong
 
-CCW=cc -Wall -Werror -Wextra
+CCW = cc -Wall -Werror -Wextra
 
-X_FLAGS=-lX11 -lXext -lmlx
+X_FLAGS = -lX11 -lXext -lmlx
 
 MAKE_LIBFT = libft.a
 
@@ -19,7 +19,7 @@ $(NAME): $(OBJ) $(MAKE_LIBFT)
 	$(CCW) $(OBJ) $(X_FLAGS) -L ./ -lft -o $(NAME)
 
 %.o: %.c
-	$(CCW) -g3 $(FLAGS) -c $< -o $@
+	$(CCW) $(FLAGS) -c $< -o $@
 
 $(MAKE_LIBFT):
 	make -C libft/
