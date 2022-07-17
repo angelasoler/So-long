@@ -6,7 +6,7 @@
 /*   By: asoler <asoler@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 14:08:05 by asoler            #+#    #+#             */
-/*   Updated: 2022/07/17 17:32:16 by asoler           ###   ########.fr       */
+/*   Updated: 2022/07/17 17:39:50 by asoler           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	put_sprites(t_mlx *mlx)
 	while (line < mlx->read_map.height)
 	{
 		mlx->assets.x = 0;
-		row= 0; 
+		row = 0;
 		while (mlx->read_map.map[line][row])
 		{
 			put_image_into_screen(mlx, mlx->read_map.map[line][row], \

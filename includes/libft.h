@@ -6,7 +6,7 @@
 /*   By: asoler <asoler@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 15:01:26 by asoler            #+#    #+#             */
-/*   Updated: 2022/07/08 20:27:15 by asoler           ###   ########.fr       */
+/*   Updated: 2022/07/17 17:39:22 by asoler           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,6 +111,6 @@ int		ft_toupper(int c);
 
 char	*get_next_line(int fd);
 
-int	ft_printf(const char *s, ...);
+int		ft_printf(const char *s, ...);
 
 #endif
