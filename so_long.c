@@ -6,7 +6,7 @@
 /*   By: asoler <asoler@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 14:08:05 by asoler            #+#    #+#             */
-/*   Updated: 2022/07/17 17:39:50 by asoler           ###   ########.fr       */
+/*   Updated: 2022/07/18 02:29:08 by asoler           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ int	get_map_size(t_map *read_map)
 	read_map->y = read_map->height * 32;
 	free(read_map->line);
 	free(read_map->str_map);
-	if (read_map->x == read_map->y || error_verify)
+	if (error_verify)
 		return (1);
 	return (0);
 }

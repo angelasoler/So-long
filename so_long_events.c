@@ -6,7 +6,7 @@
 /*   By: asoler <asoler@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/12 20:44:35 by asoler            #+#    #+#             */
-/*   Updated: 2022/07/16 16:47:34 by asoler           ###   ########.fr       */
+/*   Updated: 2022/07/18 02:28:39 by asoler           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ void	get_into_exit_door(t_mlx *mlx, int x, int y)
 			return ;
 		i++;
 	}
+	ft_printf("%s\n", "Yeah dude! End of game, so long!");
 	close_window(mlx);
 }
 
