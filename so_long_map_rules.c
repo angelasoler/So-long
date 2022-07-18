@@ -6,7 +6,7 @@
 /*   By: asoler <asoler@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/16 14:22:36 by asoler            #+#    #+#             */
-/*   Updated: 2022/07/17 16:28:53 by asoler           ###   ########.fr       */
+/*   Updated: 2022/07/18 16:20:51 by asoler           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,11 +53,11 @@ int	wall_sorrounded(t_map *read_map)
 
 int	verify_map(t_map *read_map)
 {
-	int	characters[4];
+	int	characters[3];
 	int	i;
 
 	i = 0;
-	ft_bzero(characters, (sizeof(int) * 4));
+	ft_bzero(characters, (sizeof(int) * 3));
 	while (read_map->map[i])
 	{
 		if ((ft_strlen(read_map->map[i]) != (size_t)read_map->x) || \
@@ -65,16 +65,13 @@ int	verify_map(t_map *read_map)
 			return (1);
 		if (ft_strchr(read_map->map[i], 'C'))
 			characters[0]++;
-		if (ft_strchr(read_map->map[i], '0'))
-			characters[1]++;
 		if (ft_strchr(read_map->map[i], 'P'))
-			characters[2]++;
+			characters[1]++;
 		if (ft_strchr(read_map->map[i], 'E'))
-			characters[3]++;
+			characters[2]++;
 		i++;
 	}
-	if (!characters[0] || !characters[1] || \
-	characters[2] != 1 || characters[3] != 1)
+	if (!characters[0] || characters[1] != 1 || characters[2] != 1)
 		return (1);
 	return (0);
 }
