@@ -6,7 +6,7 @@
 /*   By: asoler <asoler@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 14:08:05 by asoler            #+#    #+#             */
-/*   Updated: 2022/07/18 02:29:08 by asoler           ###   ########.fr       */
+/*   Updated: 2022/07/18 20:12:33 by asoler           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,6 @@ int	get_map_size(t_map *read_map)
 
 	error_verify = 0;
 	read_map->str_map = ft_calloc(1, sizeof(char));
-	read_map->line = get_next_line(read_map->fd);
 	read_map->x = ft_strlen(read_map->line) - 1;
 	while (read_map->line)
 	{
@@ -93,9 +92,10 @@ int	main(int argc, char *argv[])
 		exit(0);
 	}
 	mlx.read_map.fd = open(argv[1], O_RDONLY);
-	if (mlx.read_map.fd == -1)
+	mlx.read_map.line = get_next_line(mlx.read_map.fd);
+	if (mlx.read_map.fd == -1 || !mlx.read_map.line)
 	{
-		ft_printf("Error\n%s\n", strerror(errno));
+		ft_printf("Error\n%s\n", strerror(EPERM));
 		close(mlx.read_map.fd);
 		exit(0);
 	}
