@@ -6,7 +6,7 @@
 /*   By: asoler <asoler@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 14:08:05 by asoler            #+#    #+#             */
-/*   Updated: 2022/07/18 20:12:33 by asoler           ###   ########.fr       */
+/*   Updated: 2022/07/18 20:30:23 by asoler           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,5 +108,4 @@ int	main(int argc, char *argv[])
 		exit(0);
 	}
 	open_window(&mlx);
-	return (0);
 }
