@@ -56,20 +56,23 @@ void	open_window(t_mlx *mlx)
 
 int	get_map_size(t_map *read_map)
 {
-	int		error_verify;
+	int	error_verify;
 
+	error_verify = 0;
 	read_map->str_map = ft_calloc(1, sizeof(char));
 	read_map->line = get_next_line(read_map->fd);
 	read_map->x = ft_strlen(read_map->line) - 1;
 	while (read_map->line)
 	{
+		if (read_map->line[0] == '\n')
+			error_verify = 1;
 		read_map->str_map = ft_strjoin(read_map->str_map, read_map->line);
 		free(read_map->line);
 		read_map->line = get_next_line(read_map->fd);
 	}
 	read_map->map = ft_split(read_map->str_map, '\n');
 	read_map->height = get_map_height(read_map->map);
-	error_verify = verify_map(read_map);
+	error_verify += verify_map(read_map);
 	read_map->x *= 32;
 	read_map->y = read_map->height * 32;
 	free(read_map->line);
