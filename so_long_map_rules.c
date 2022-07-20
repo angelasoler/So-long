@@ -6,11 +6,25 @@
 /*   By: asoler <asoler@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/16 14:22:36 by asoler            #+#    #+#             */
-/*   Updated: 2022/07/18 20:19:50 by asoler           ###   ########.fr       */
+/*   Updated: 2022/07/20 13:25:00 by asoler           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+
+int	count_chars_in_line(char *line, char c)
+{
+	int	i;
+
+	i = 0;
+	while (*line)
+	{
+		if (*line == c)
+			i++;
+		line++;
+	}
+	return (i);
+}
 
 int	different_characters(char *line)
 {
@@ -68,9 +82,9 @@ int	verify_map(t_map *read_map)
 		if (ft_strchr(read_map->map[i], '0'))
 			characters[1]++;
 		if (ft_strchr(read_map->map[i], 'P'))
-			characters[2]++;
+			characters[2] += count_chars_in_line(read_map->map[i], 'P');
 		if (ft_strchr(read_map->map[i], 'E'))
-			characters[3]++;
+			characters[3] += count_chars_in_line(read_map->map[i], 'E');
 		i++;
 	}
 	if (!characters[0] || !characters[1] || \
