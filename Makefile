@@ -19,7 +19,7 @@ $(NAME): $(OBJ) $(MAKE_LIBFT)
 	$(CCW) $(OBJ) $(X_FLAGS) -L ./ -lft -o $(NAME)
 
 %.o: %.c
-	$(CCW) $(FLAGS) -c $< -o $@
+	$(CCW) -c $< -o $@
 
 $(MAKE_LIBFT):
 	make -C libft/
