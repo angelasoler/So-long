@@ -1,6 +1,6 @@
 NAME = so_long
 
-CCW = cc -Wall -Werror -Wextra
+CCW = gcc -Wall -Werror -Wextra
 
 X_FLAGS = -lX11 -lXext -lmlx
 
