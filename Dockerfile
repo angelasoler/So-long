@@ -23,14 +23,3 @@ RUN apt update && \
     && ldconfig \
     && apt clean
 
-
-# CMD ["bash ./configure.sh"]
-
-    #&& /solong/minilibx-linux/configure
-    # git clone https://github.com/42Paris/minilibx-linux \
-    # cd minilibx-linux \
-    # apt-get install libxext-dev libxrandr-dev libx11-dev libbsd-dev libssl-dev \
-    # mv minilibx-linux/man/man1 to /usr/local/man/ \
-    # mv minilibx-linux/libmlx.a to /usr/local/lib/ \
-    # mv minilibx-linux/mlx.h to /usr/local/include/ \
-
