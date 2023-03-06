@@ -1,4 +1,4 @@
-NAME=so_long
+NAME=solong
 
 CCW=gcc -Wall -Werror -Wextra
 
@@ -17,10 +17,12 @@ PWD=$(shell pwd)
 
 BUILD=docker build -t ${NAME} .
 
-RUN=docker run -it --privileged --name=${NAME} \
+RUN=docker run -it --rm --privileged --name=${NAME} \
 	--mount type=bind,source=${PWD},target=/solong \
-	-e DISPLAY=${DISPLAY} -v /tmp/.X11-unix:/tmp/.X11-unix:ro \
-	${NAME} bash
+	-e DISPLAY=${DISPLAY} -e PATH=${PATH}:/solong -v /tmp/.X11-unix:/tmp/.X11-unix:ro \
+	${NAME} configure.sh
+
+EXEC=docker exec -ti ${NAME} bash
 
 all: $(NAME) clean
 
@@ -50,5 +52,9 @@ clean:
 run:
 	${BUILD}
 	${RUN}
+
+start: 
+	docker start ${NAME}
+	$(EXEC)
 
 .PONHY: re fclean clean all

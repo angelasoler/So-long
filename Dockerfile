@@ -24,7 +24,7 @@ RUN apt update && \
     && apt clean
 
 
-# CMD ["make -C So-long", "./solong"]
+# CMD ["bash ./configure.sh"]
 
     #&& /solong/minilibx-linux/configure
     # git clone https://github.com/42Paris/minilibx-linux \
