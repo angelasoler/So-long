@@ -50,4 +50,8 @@
 
 Just run the command `make run` and put the map name when asked. It would be run into docker container
 
-- You can see map names into maps directory, and also create new ones, take care to be into this especific directory and with `.ber` at the end.
+- You can see map names into maps directory, and also create new ones, take care to be into maps directory and with `.ber` at the end.
+
+## :gem: SOMER SOURCES
+
+[Minilibx](https://github.com/42Paris/minilibx-linux) A simple X-Window (X11R6) programming API in C, designed for students, suitable for X-beginners.
