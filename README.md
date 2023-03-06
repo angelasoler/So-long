@@ -42,6 +42,7 @@
 Just run the command `make run` and put the map name when asked. It would be run into docker container
 
 - You can see map names into maps directory, and also create new ones, take care to be into maps directory and with `.ber` at the end.
+- To get out of the game before ended it press `esc`.
 
 ## :gem: SOMER SOURCES
 
