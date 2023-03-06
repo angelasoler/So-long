@@ -41,8 +41,13 @@
   </p>
 </p>
 
+## :clipboard: prerequisites
 
+- Docker
+- Make
 
-`TODO -> submodules with ready configutions to run this game in mac and linux (HOWTO)`
+## :computer: HOWTO RUN
 
+Just run the command `make run` and put the map name when asked. It would be run into docker container
 
+- You can see map names into maps directory, and also create new ones, take care to be into this especific directory and with `.ber` at the end.
