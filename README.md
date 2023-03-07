@@ -16,7 +16,7 @@
 
 💠 Graphic computer
 
-💠 Source code minilibx
+💠 Minilibx source code 
 
 💠 Window displaying
 
