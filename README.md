@@ -39,7 +39,7 @@
 
 ## :computer: HOWTO RUN
 
-Just run the command `make run` and put the map name when asked. It will be run into a docker container.
+Just run the command `sudo make run` and put the map name when asked. It will be run into a docker container.
 
 - You can see the maps names into `maps` directory, and also create new ones. Take care to be into `maps` directory and with `.ber` at the end.
 - To get out of the game before ended it press `esc`.
