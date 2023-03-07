@@ -9,7 +9,7 @@
      ~~~~~~~   First approach with graphical X Window System   ~~~~~~
 </p>
 
-<h3 align="center">Subjects studied:</h3>
+## <h3 align="center">Subjects studied:</h3>
 <p>
 
 💠 Images, pixels and RGB
