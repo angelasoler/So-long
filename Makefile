@@ -50,6 +50,7 @@ clean:
 	rm -rf *.o
 
 run:
+	xhost +
 	${BUILD}
 	${RUN}
 
