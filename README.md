@@ -9,7 +9,7 @@
      ~~~~~~~   First approach with graphical X Window System   ~~~~~~
 </p>
 
-<h3>Subjects studied:</h3>
+<h3 align="center">Subjects studied:</h3>
 <p>
 
 💠 Images, pixels and RGB
@@ -32,7 +32,7 @@
 
 </h1>
 
-## :clipboard: prerequisites
+## :clipboard: PREREQUISITES
 
 - Docker
 - Make
@@ -44,7 +44,7 @@ Just run the command `make run` and put the map name when asked. It will be run 
 - You can see the maps names into `maps` directory, and also create new ones. Take care to be into `maps` directory and with `.ber` at the end.
 - To get out of the game before ended it press `esc`.
 
-## :gem: SOMER SOURCES
+## :gem: SOME SOURCES
 
 [Minilibx](https://github.com/42Paris/minilibx-linux) A simple X-Window (X11R6) programming API in C, designed for students, suitable for X-beginners.
 
