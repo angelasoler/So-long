@@ -1,6 +1,6 @@
 
 <h1  align="center">
-  <img src=https://game.42sp.org.br/static/assets/achievements/so_longe.png>  
+  <img src=https://github.com/angelasoler/minha_quebrada/tree/main/Assets/Images>  
   
   [![asoler's 42 so_long Score](https://badge42.vercel.app/api/v2/cl263316l006809l0mxrfwgrw/project/2642883)](https://github.com/JaeSeoKim/badge42)
 </h1>
